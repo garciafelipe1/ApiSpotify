@@ -68,8 +68,7 @@ const getEmpleado = (req = request, res = response) => {
         data
       })
     })
-    .catch((error) => {
-      // handle error
+    .catch((error) => {  // handle error
       console.log(error)
       res.status(400).json({
         msg: 'Error',
