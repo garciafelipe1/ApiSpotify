@@ -13,8 +13,8 @@ class Server {
   }
 
   rutas () {
-    this.app.use('/api/v1/artistas', require('../routes/artistas')) // Integrante 1
-    this.app.use('/api/v1/empleados', require('../routes/empleados')) // Integrante 2
+    this.app.use('/api/v1/artistas', require('../routes/artistas'))
+    this.app.use('/api/canciones', require('../routes/canciones'))
     /*   this.app.use('*', (req, res) => {
             res.status(404).send('Page not found');
         }); // Integrante 2 */
