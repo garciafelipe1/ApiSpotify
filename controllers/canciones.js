@@ -9,13 +9,13 @@ const getCanciones = (req = request, res = response) => {
 
   axios.get(`https://66dc500547d749b72acb464f.mockapi.io/api/canciones${filtro}`)
     .then((response) => {
-      const { data = [] } = response   // handle success
+      const { data = [] } = response // handle success
       res.status(200).json({
         msg: 'Ok',
         data
       })
     })
-    .catch((error) => {     // handle error
+    .catch((error) => { // handle error
       console.log(error)
       res.status(400).json({
         msg: 'Error',
@@ -48,6 +48,5 @@ const getCancion = (req = request, res = response) => {
 
 module.exports = {
   getCanciones,
-  getCancion,
-  getPopulares
+  getCancion
 }
