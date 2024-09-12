@@ -40,7 +40,6 @@ const getCanciones = (req = request, res = response) => {
     });
 };
 
-
 const getCancion = (req = request, res = response) => {
   const { id = '' } = req.params
   console.log(id)
