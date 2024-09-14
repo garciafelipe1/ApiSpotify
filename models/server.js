@@ -13,7 +13,7 @@ class Server {
   }
 
   rutas () {
-    this.app.use('/api/v1/artistas', require('../routes/artistas'))
+    this.app.use('/api/artistas', require('../routes/artistas'))
 
     this.app.use('/api/canciones', require('../routes/canciones'))
 

@@ -1,15 +1,29 @@
 const axios = require('axios')
 const { request, response } = require('express')
 
-// const getArtistas = (req, res) => {
-//   res.json({ name: 'Controlador de artistas' })
-// }
-
 const getArtistas = (req = request, res = response) => {
   const { nombre = '', fechaDeNacimiento = '', genero = '', cancionHit = '' } = req.query
   console.log(nombre, fechaDeNacimiento, genero, cancionHit)
 
-  axios.get('https://66cfb95f181d059277dc29a2.mockapi.io/artistas')
+  let filtro = ''; // Variable para ver si hay filtro
+  
+  if (nombre) {
+    filtro += `?nombre=${nombre}`;
+  }
+  
+  if (fechaDeNacimiento) {
+    filtro += filtro ? `&fechaDeNacimiento=${fechaDeNacimiento}` : `?fechaDeNacimiento=${fechaDeNacimiento}`;
+  }
+  
+  if (genero) {
+    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`;
+  }
+  
+  if (cancionHit) {
+    filtro += filtro ? `&cancionHit=${cancionHit}` : `?cancionHit=${cancionHit}`;
+  }
+
+  axios.get(`https://66cfb95f181d059277dc29a2.mockapi.io/artistas${filtro}`)
     .then((response) => {
       const { data = [] } = response
       // handle success
