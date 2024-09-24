@@ -15,11 +15,11 @@ const getPlaylists = (req = request, res = response) => {
   }
 
   if (genero) {
-    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`;
+    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`
   }
 
   if (reproducciones) {
-    filtro += filtro ? `&reproducciones=${reproducciones}` : `?reproducciones=${reproducciones}`;
+    filtro += filtro ? `&reproducciones=${reproducciones}` : `?reproducciones=${reproducciones}`
   }
 
   // Hacer la solicitud GET usando Axios con el filtro
