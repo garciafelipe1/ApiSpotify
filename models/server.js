@@ -13,9 +13,11 @@ class Server {
   }
 
   rutas () {
+
     this.app.use('/api/playlists', require('../routes/playlists'))
     this.app.use('/api/artistas', require('../routes/artistas'))
     this.app.use('/api/canciones', require('../routes/canciones'))
+
     this.app.use('*', (req, res) => {
       res.status(404).send('Page not found')
     })
