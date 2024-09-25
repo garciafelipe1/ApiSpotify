@@ -5,20 +5,20 @@ const getArtistas = (req = request, res = response) => {
   const { nombre = '', fechaDeNacimiento = '', genero = '', cancionHit = '' } = req.query
   console.log(nombre, fechaDeNacimiento, genero, cancionHit)
 
-  let filtro = ''; // Variable para ver si hay filtro
-  
+  let filtro = '' // Variable para ver si hay filtro
+
   if (nombre) {
-    filtro += `?nombre=${nombre}`;
+    filtro += `?nombre=${nombre}`
   }
-  
+
   if (fechaDeNacimiento) {
     filtro += filtro ? `&fechaDeNacimiento=${fechaDeNacimiento}` : `?fechaDeNacimiento=${fechaDeNacimiento}`;
   }
-  
+
   if (genero) {
     filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`;
   }
-  
+
   if (cancionHit) {
     filtro += filtro ? `&cancionHit=${cancionHit}` : `?cancionHit=${cancionHit}`;
   }
