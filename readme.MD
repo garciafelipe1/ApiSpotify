@@ -13,8 +13,8 @@
 
 Desarrollado por: Matías Uriel Blanco
 
-Descripción
-Este proyecto expone dos endpoints para consultar canciones desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre, nombre_artista, genero, y reproducciones, o bien obtener una canción específica mediante su id.
+Descripción:
+Este proyecto expone dos endpoints para consultar CANCIONES desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre, nombre_artista, genero, y reproducciones, o bien obtener una canción específica mediante su id.
 
 Endpoints
 1. Obtener todas las canciones (GET)
@@ -75,7 +75,8 @@ id | El ID único de la canción a buscar | /api/canciones/1
 
 Desarrollado por: FELIPE GARCIA
 
-Descripción Este proyecto expone dos endpoints para consultar PLAYLISTS desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre_playlists, genero, reproducciones o bien obtener una playlist específica mediante su id.
+Descripción:
+Este proyecto expone dos endpoints para consultar PLAYLISTS desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre_playlists, genero, reproducciones o bien obtener una playlist específica mediante su id.
 
 Endpoints
 
@@ -119,6 +120,61 @@ Ejemplo de solicitud:
 GET /api/playlist/1
 Respuestas:
 200 - OK: La solicitud fue exitosa y devuelve los detalles de la canción.
+
+    {
+        "msg": "Ok",
+        "data": {...}
+    }
+400 - Bad Request: Hubo un error en la solicitud.
+
+    {
+        "msg": "Error",
+        "error": {...}
+    }
+
+
+
+Desarrollado por: Bautista Exposito
+
+Descripción:
+Este proyecto expone dos endpoints para consultar ARTISTAS desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre, fechaDeNacimiento, genero, cancionHit, o bien obtener un artista específico mediante su id.
+
+Endpoints
+
+Obtener todos los artistas (GET) Este endpoint devuelve una lista de artistas, y permite aplicar filtros opcionales utilizando parámetros de consulta.
+URL: /api/artistas Método: GET Query Params Opcionales:
+
+nombre	| Filtro por nombre del artista | /api/artistas?nombre=Maxine%20Jerde
+fechaDeNacimiento | Filtro por la fecha de nacimiento del artista | /api/artistas?fechaDeNacimiento=1944
+genero | Filtro por género del artista | /api/artistas?genero=Woman
+cancionHit | Filtro por la cancion con mas reproducciones del artista | /api/artistas?cancionHit=Faith
+
+Ejemplo de solicitud:
+GET /api/artistas?fechaDeNacimiento=2000
+
+Respuestas:
+200 - OK: La solicitud fue exitosa y devuelve la lista de artistas filtrados.
+    
+    {
+        "msg": "Ok",
+        "data": [...]
+    }
+400 - Bad Request: Hubo un error en la solicitud.
+
+    {
+        "msg": "Error",
+        "error": {...}
+    }
+
+Obtener un artista por ID (GET) Este endpoint devuelve los detalles de un artista específico utilizando su id.
+URL: /api/artistas/{id} Método: GET Parámetro de ruta:
+
+id | El ID único del artista a buscar | /api/artistas/1
+
+Ejemplo de solicitud:
+GET /api/artistas/1
+Respuestas:
+200 - OK: La solicitud fue exitosa y devuelve los detalles del artista.
 
     {
         "msg": "Ok",
