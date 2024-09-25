@@ -2,43 +2,43 @@ const axios = require('axios')
 const { request, response } = require('express')
 
 const getCanciones = (req = request, res = response) => {
-  const { nombre = '', nombre_artista = '', genero = '', reproducciones = '' } = req.query;
-  console.log(nombre, nombre_artista, genero, reproducciones);
+  const { nombre = '', nombreArtista = '', genero = '', reproducciones = '' } = req.query
+  console.log(nombre, nombreArtista, genero, reproducciones)
 
-  let filtro = ''; // Variable para ver si hay filtro
-  
+  let filtro = '' // Variable para ver si hay filtro
+
   if (nombre) {
-    filtro += `?nombre=${nombre}`;
+    filtro += `?nombre=${nombre}`
   }
-  
-  if (nombre_artista) {
-    filtro += filtro ? `&nombre_artista=${nombre_artista}` : `?nombre_artista=${nombre_artista}`;
+
+  if (nombreArtista) {
+    filtro += filtro ? `&nombreArtista=${nombreArtista}` : `?nombreArtista=${nombreArtista}`
   }
-  
+
   if (genero) {
-    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`;
+    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`
   }
-  
+
   if (reproducciones) {
-    filtro += filtro ? `&reproducciones=${reproducciones}` : `?reproducciones=${reproducciones}`;
+    filtro += filtro ? `&reproducciones=${reproducciones}` : `?reproducciones=${reproducciones}`
   }
 
   axios.get(`https://66dc500547d749b72acb464f.mockapi.io/api/canciones${filtro}`)
     .then((response) => {
-      const { data = [] } = response;  // manejar éxito
+      const { data = [] } = response // manejar éxito
       res.status(200).json({
         msg: 'Ok',
         data
-      });
+      })
     })
-    .catch((error) => {  // manejar error
-      console.log(error);
+    .catch((error) => { // manejar error
+      console.log(error)
       res.status(400).json({
         msg: 'Error',
         error
-      });
-    });
-};
+      })
+    })
+}
 
 const getCancion = (req = request, res = response) => {
   const { id = '' } = req.params
@@ -64,5 +64,5 @@ const getCancion = (req = request, res = response) => {
 
 module.exports = {
   getCanciones,
-  getCancion,
+  getCancion
 }

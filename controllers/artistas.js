@@ -12,15 +12,15 @@ const getArtistas = (req = request, res = response) => {
   }
 
   if (fechaDeNacimiento) {
-    filtro += filtro ? `&fechaDeNacimiento=${fechaDeNacimiento}` : `?fechaDeNacimiento=${fechaDeNacimiento}`;
+    filtro += filtro ? `&fechaDeNacimiento=${fechaDeNacimiento}` : `?fechaDeNacimiento=${fechaDeNacimiento}`
   }
 
   if (genero) {
-    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`;
+    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`
   }
 
   if (cancionHit) {
-    filtro += filtro ? `&cancionHit=${cancionHit}` : `?cancionHit=${cancionHit}`;
+    filtro += filtro ? `&cancionHit=${cancionHit}` : `?cancionHit=${cancionHit}`
   }
 
   axios.get(`https://66cfb95f181d059277dc29a2.mockapi.io/artistas${filtro}`)
