@@ -23,7 +23,8 @@ const getPlaylists = (req = request, res = response) => {
   }
 
   // Hacer la solicitud GET usando Axios con el filtro
-  axios.get('PLAYLISTS/api/playlists/playlist')
+  axios.get(`PLAYLISTS/api/playlists/${filtro}`)
+
     .then((response) => {
       const { data = [] } = response // manejar éxito
       res.status(200).json({
