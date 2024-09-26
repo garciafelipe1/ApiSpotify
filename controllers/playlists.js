@@ -24,6 +24,7 @@ const getPlaylists = (req = request, res = response) => {
 
   // Hacer la solicitud GET usando Axios con el filtro
   axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/${filtro}`)
+ 
     .then((response) => {
       const { data = [] } = response // manejar éxito
       res.status(200).json({
