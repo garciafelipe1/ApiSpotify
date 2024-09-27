@@ -19,10 +19,9 @@ const getPlaylists = (req = request, res = response) => {
     params.append('reproducciones', reproducciones);
   }
 
-  // Hacer la solicitud GET usando Axios con el filtro
-  axios
+
     .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
- 
+
     .then((response) => {
       const { data = [] } = response; // manejar éxito
       res.status(200).json({
@@ -43,9 +42,11 @@ const getPlaylist = (req = request, res = response) => {
   const { idplaylist = '' } = req.params;
   console.log(idplaylist);
 
+
   // Hacer la solicitud GET utilizando el idplaylist
   axios
     .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${idplaylist}`)
+
     .then((response) => {
       const { data } = response; // manejar éxito
       res.status(200).json({
