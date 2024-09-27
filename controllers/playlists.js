@@ -19,8 +19,8 @@ const getPlaylists = (req = request, res = response) => {
     params.append('reproducciones', reproducciones);
   }
 
-
-    axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
+garcia-branch
+    get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
 
     .then((response) => {
       const { data = [] } = response; // manejar éxito
@@ -43,9 +43,14 @@ const getPlaylist = (req = request, res = response) => {
   console.log(idplaylist);
 
 
-  // Hacer la solicitud GET utilizando el idplaylist
-  axios
-    .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${idplaylist}`)
+  
+
+  
+  axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${idplaylist}`)
+
+
+ 
+
 
     .then((response) => {
       const { data } = response; // manejar éxito
@@ -65,6 +70,6 @@ const getPlaylist = (req = request, res = response) => {
 
 // Exportar las funciones
 module.exports = {
-  getPlaylist,
   getPlaylists,
+  getPlaylist,
 };
