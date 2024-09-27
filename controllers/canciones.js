@@ -23,7 +23,7 @@ const getCanciones = (req = request, res = response) => {
     filtro += filtro ? `&reproducciones=${reproducciones}` : `?reproducciones=${reproducciones}`
   }
 
-  axios.get(`CANCIONES/api/canciones${filtro}`)
+  axios.get(`${process.env.CANCIONES}/api/canciones${filtro}`)
     .then((response) => {
       const { data = [] } = response // manejar éxito
       res.status(200).json({
@@ -44,7 +44,7 @@ const getCancion = (req = request, res = response) => {
   const { id = '' } = req.params
   console.log(id)
 
-  axios.get(`CANCIONES/api/canciones/${id}`)
+  axios.get(`${process.env.CANCIONES}/api/canciones/${id}`)
     .then((response) => {
       const { data } = response
       res.status(200).json({
