@@ -20,7 +20,7 @@ const getPlaylists = (req = request, res = response) => {
   }
 
 
-    .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
+    axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
 
     .then((response) => {
       const { data = [] } = response; // manejar éxito
