@@ -23,7 +23,7 @@ const getArtistas = (req = request, res = response) => {
     filtro += filtro ? `&cancionHit=${cancionHit}` : `?cancionHit=${cancionHit}`
   }
 
-  axios.get(`${process.env.ARTISTAS}/artistas${filtro}`)
+  axios.get(`https://66cfb95f181d059277dc29a2.mockapi.io/artistas${filtro}`)
     .then((response) => {
       const { data = [] } = response
       // handle success
@@ -48,7 +48,7 @@ const getArtista = (req = request, res = response) => {
   const { idArtista = '' } = req.params
   console.log(idArtista)
 
-  axios.get(`${process.env.ARTISTAS}/artistas/${idArtista}`)
+  axios.get(`https://66cfb95f181d059277dc29a2.mockapi.io/artistas/${idArtista}`)
     .then((response) => {
       const { data } = response
       res.status(200).json({
