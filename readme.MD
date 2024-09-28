@@ -176,3 +176,29 @@ Respuestas:
         "msg": "Error",
         "error": {...}
     }
+
+Desarrollado por: Joaquín Auday
+
+Descripción
+Este proyecto expone endpoints para consultar álbumes desde un servicio externo (MockAPI). Se pueden realizar búsquedas utilizando distintos parámetros como nombre, artista, genero, o bien obtener un álbum específico mediante su id.
+
+Endpoints
+1. Obtener todos los álbumes (GET)
+Este endpoint devuelve una lista de álbumes y permite aplicar filtros opcionales:
+URL: /api/albumes
+Método: GET
+
+2. Obtener un álbum por ID (GET)
+URL: /api/albumes/{id}
+Método: GET
+Ejemplo: GET /api/albumes/1
+
+3. Obtener álbumes por artista (GET)
+URL: /api/albumes/buscar/artista
+Query Params: artista
+Ejemplo: GET /api/albumes/buscar/artista?artista=Queen
+
+4. Obtener álbumes por género (GET)
+URL: /api/albumes/buscar/genero
+Query Params: genero
+Ejemplo: GET /api/albumes/buscar/genero?genero=Rock
