@@ -19,8 +19,8 @@ const getPlaylists = (req = request, res = response) => {
     params.append('reproducciones', reproducciones);
   }
 
-garcia-branch
-    get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
+
+    axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist?${params.toString()}`)
 
     .then((response) => {
       const { data = [] } = response; // manejar éxito
@@ -41,6 +41,7 @@ garcia-branch
 const getPlaylist = (req = request, res = response) => {
   const { idplaylist = '' } = req.params;
   console.log(idplaylist);
+  console.log(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${idplaylist}`)
 
 
   
