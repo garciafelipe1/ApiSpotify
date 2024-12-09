@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 
 class Server {
   constructor () {
@@ -9,11 +10,13 @@ class Server {
   }
 
   middleware () {
+    this.app.use(cors())
     this.app.use(express.static('public'))
+    this.app.use(express.json()) // Asegúrate de incluir esto para manejar JSON
   }
 
   rutas () {
-    this.app.use('/api/playlists', require('../routes/playlists'))
+    this.app.use('/api/playlists', require('../routes/playlists')) // Esto mapea las rutas en playlist.js
     this.app.use('/api/artistas', require('../routes/artistas'))
     this.app.use('/api/canciones', require('../routes/canciones'))
     this.app.use('/api/albumes', require('../routes/albumes'))
@@ -25,7 +28,7 @@ class Server {
 
   listen () {
     this.app.listen(this.port, () => {
-      console.log(`La API esta escuchando en el this.PORT ${this.port}`)
+      console.log(`La API está escuchando en el puerto ${this.port}`)
     })
   }
 }

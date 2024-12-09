@@ -1,66 +1,82 @@
 const axios = require('axios')
 const { request, response } = require('express')
+const cors = require('cors') // Importar el paquete cors
+
+// Habilitar CORS para todas las rutas
+const app = require('express')()
+app.use(cors()) // Esto habilita CORS en todas las rutas
 
 // Obtener todas las playlists con filtros
 const getPlaylists = (req = request, res = response) => {
-  const { nombre = '', creador = '', genero = '', seguidores = '' } = req.query
-  console.log(nombre, creador, genero, seguidores)
+  const { avatar = '', nombre = '', cantidad = '', favoritos = '', idplaylist = '' } = req.query
+  console.log(avatar, nombre, cantidad, favoritos, idplaylist)
 
-  let filtro = '' // Variable para construir el filtro
+  let filtro = '' // Variable para ver si hay filtro
+
+  if (avatar) {
+    filtro += `?avatar=${avatar}`
+  }
 
   if (nombre) {
-    filtro += `?nombre=${nombre}`
+    filtro += filtro ? `&nombre=${nombre}` : `?nombre=${nombre}`
   }
 
-  if (creador) {
-    filtro += filtro ? `&creador=${creador}` : `?creador=${creador}`
+  if (cantidad) {
+    filtro += filtro ? `&cantidad=${cantidad}` : `?cantidad=${cantidad}`
   }
 
-  if (genero) {
-    filtro += filtro ? `&genero=${genero}` : `?genero=${genero}`
+  if (favoritos) {
+    filtro += filtro ? `&favoritos=${favoritos}` : `?favoritos=${favoritos}`
   }
 
-  if (seguidores) {
-    filtro += filtro ? `&seguidores=${seguidores}` : `?seguidores=${seguidores}`
+  if (idplaylist) {
+    filtro += filtro ? `&idplaylist=${idplaylist}` : `?idplaylist=${idplaylist}`
   }
 
-  axios
-    .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist${filtro}`)
+  // Crear la URL completa y mostrarla en consola
+  const url = `https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist${filtro}`
+  console.log('URL solicitada:', url) // Verifica la URL completa
+
+  axios.get(url)
     .then((response) => {
-      const { data = [] } = response // manejar éxito
+      console.log('Datos recibidos:', response.data)
+      const { data = [] } = response
+
+      // Devuelvo todos los datos sin transformación
       res.status(200).json({
         msg: 'Ok',
-        data
+        data // Aquí no estoy transformando nada, solo devolviendo los datos tal como los recibí
       })
     })
-    .catch((error) => {
-      console.log(error) // manejar error
+    .catch((error) => { // Manejo de error
+      console.log('Error en la solicitud:', error.response?.data || error.message)
       res.status(400).json({
         msg: 'Error',
-        error
+        error: error.message
       })
     })
 }
 
 // Obtener una playlist por ID
 const getPlaylist = (req = request, res = response) => {
-  const { idplaylist = '' } = req.params
-  console.log(idplaylist)
+  const { id = '' } = req.params
+  console.log(id)
 
-  axios
-    .get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${idplaylist}`)
+  axios.get(`https://66f468a777b5e88970996d0d.mockapi.io/api/playlists/playlist/${id}`)
     .then((response) => {
       const { data } = response
+
+      // Devuelvo todos los datos de la playlist sin transformarlos
       res.status(200).json({
         msg: 'Ok',
-        data
+        data // Aquí tampoco estoy transformando nada, solo devolviendo los datos tal como los recibí
       })
     })
-    .catch((error) => {
-      console.log(error) // manejar error
+    .catch((error) => { // Manejo de error
+      console.log('Error en la solicitud:', error.response?.data || error.message)
       res.status(400).json({
         msg: 'Error',
-        error
+        error: error.message
       })
     })
 }
